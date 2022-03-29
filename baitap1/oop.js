@@ -16,40 +16,40 @@ function hienThiThongTin() {
    * - Phương thức(method): Chức năng của đối tượng
    */
   // Property
-  var sinhVien = {
-    /**
-     * key: value
-     *    - key: do mình tự đặt tên
-     *    - value: giá trị
-     */
-    maSV: _maSV,
-    tenSV: _tenSV,
-    loaiSV: _loaiSV,
-    diemToan: _diemToan,
-    diemVan: _diemVan,
-    diemTB: 0,
+  // var sinhVien = {
+  //   /**
+  //    * key: value
+  //    *    - key: do mình tự đặt tên
+  //    *    - value: giá trị
+  //    */
+  //   maSV: _maSV,
+  //   tenSV: _tenSV,
+  //   loaiSV: _loaiSV,
+  //   diemToan: _diemToan,
+  //   diemVan: _diemVan,
+  //   diemTB: 0,
 
-    // Method
-    tinhDTB: function () {
-      this.diemTB = (this.diemToan + this.diemVan) / 2;
-    },
+  //   // Method
+  //   tinhDTB: function () {
+  //     this.diemTB = (this.diemToan + this.diemVan) / 2;
+  //   },
 
-    xeploai: function (dtb) {
-        if (8 <= dtb && dtb <= 10) {
-            // gioi
-            return "Gioi";
-          } else if (6 <= dtb && dtb < 8) {
-            // kha
-            return "Kha";
-          } else if (5 <= dtb && dtb < 6) {
-            // trung binh
-            return "TB";
-          } else {
-            // yeu
-            return "Yeu";
-          }
-    },
-  };
+  //   xeploai: function (dtb) {
+  //       if (8 <= dtb && dtb <= 10) {
+  //           // gioi
+  //           return "Gioi";
+  //         } else if (6 <= dtb && dtb < 8) {
+  //           // kha
+  //           return "Kha";
+  //         } else if (5 <= dtb && dtb < 6) {
+  //           // trung binh
+  //           return "TB";
+  //         } else {
+  //           // yeu
+  //           return "Yeu";
+  //         }
+  //   },
+  // };
   sinhVien.tinhDTB();
   var loai = sinhVien.xeploai(sinhVien.diemTB)
 
