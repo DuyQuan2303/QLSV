@@ -39,7 +39,7 @@ getEle("btnThemSV").addEventListener("click", function () {
 
   taoBang(dssv.arr);
 
-  //   console.log(dssv.arr);
+  
 });
 
 // function taoBang(arr) {
@@ -86,5 +86,21 @@ getEle("btnThemSV").addEventListener("click", function () {
 
 
 function taoBang(arr){
-    
+    var content = "";
+    for(var i = 0 ; i < arr.length; i++){
+        var sinhVien = arr[i];
+        content += `
+        <tr>
+            <td>${sinhVien.maSV}</td>
+            <td>${sinhVien.tenSV}</td>
+            <td>${sinhVien.emailSV}</td>
+            <td>${sinhVien.ngaySinh}</td>
+            <td>${sinhVien.khoaHoc}</td>
+            <td>${sinhVien.diemTB}</td>
+
+            
+        </tr>
+        `
+    }
+    getEle("tbodySinhVien").innerHTML = content ; 
 }
