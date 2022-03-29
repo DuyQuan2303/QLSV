@@ -16,6 +16,7 @@ function hienThiThongTin() {
    * - Phương thức(method): Chức năng của đối tượng
    */
   // Property
+
   // var sinhVien = {
   //   /**
   //    * key: value
@@ -50,8 +51,13 @@ function hienThiThongTin() {
   //         }
   //   },
   // };
+
+  // tao doi tuong sinh vien tu lop doi tuong Sinhvien
+  var sinhVien = new Sinhvien(_maSV, _tenSV, _loaiSV, _diemToan, _diemVan);
+  
   sinhVien.tinhDTB();
-  var loai = sinhVien.xeploai(sinhVien.diemTB)
+  var loai = sinhVien.xepLoai(sinhVien.diemTB);
+  // console.log(sinhVien);
 
 
   getEle("spanTenSV").innerHTML = sinhVien.tenSV;
