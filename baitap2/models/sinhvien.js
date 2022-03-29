@@ -18,8 +18,13 @@ function Sinhvien(
   this.diemToan = _diemToan;
   this.diemLy = _diemLy;
   this.diemHoa = _diemHoa;
-  
-  this.diemTB = function () {
-   return  (this.diemToan + this.diemLy + this.diemHoa) / 3;
+  this.diemTB = 0;
+
+  this.tinhDiemTB = function () {
+    this.diemTB = (this.diemToan + this.diemLy + this.diemHoa) / 3;
   };
+
+  //   this.diemTB = function () {
+  //    return  (this.diemToan + this.diemLy + this.diemHoa) / 3;
+  //   };
 }
