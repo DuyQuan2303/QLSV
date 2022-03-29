@@ -6,11 +6,11 @@ function Sinhvien(_maSV, _tenSV, _loaiSV, _diemToan, _diemVan) {
   this.loaiSV = _loaiSV;
   this.diemToan = _diemToan;
   this.diemVan = _diemVan;
-  this.diemTB = 0;
+  // this.diemTB = 0;
 
-  this.tinhDTB = function () {
-    this.diemTB = (this.diemToan + this.diemVan) / 2;
-  };
+  this.diemTB = function () {
+    return  (this.diemToan + this.diemVan) / 2;
+   };
 
   this.xepLoai = function (dtb) {
     if (8 <= dtb && dtb <= 10) {

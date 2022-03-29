@@ -55,14 +55,13 @@ function hienThiThongTin() {
   // tao doi tuong sinh vien tu lop doi tuong Sinhvien
   var sinhVien = new Sinhvien(_maSV, _tenSV, _loaiSV, _diemToan, _diemVan);
   
-  sinhVien.tinhDTB();
-  var loai = sinhVien.xepLoai(sinhVien.diemTB);
+  var loai = sinhVien.xepLoai(sinhVien.diemTB());
   // console.log(sinhVien);
 
 
   getEle("spanTenSV").innerHTML = sinhVien.tenSV;
   getEle("spanMaSV").innerHTML = sinhVien.maSV;
   getEle("spanLoaiSV").innerHTML = sinhVien.loaiSV;
-  getEle("spanDTB").innerHTML = sinhVien.diemTB;
+  getEle("spanDTB").innerHTML = sinhVien.diemTB();
   getEle("spanXepLoai").innerHTML = loai;
 }
