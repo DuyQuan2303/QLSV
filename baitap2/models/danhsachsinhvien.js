@@ -3,7 +3,8 @@ function Danhsachsinhvien (){
 
     // Thêm sinh viên
     this.themSV = function(sv){
-        this.arr.push(sv)
+        this.arr.push(sv);
+        
     };
     // Xóa sinh viên
     this.xoaSV = function(){};
