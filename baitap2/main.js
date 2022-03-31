@@ -40,46 +40,46 @@ getEle("btnThemSV").addEventListener("click", function () {
   taoBang(dssv.arr);
 });
 
-// function taoBang(arr) {
-//   console.log(arr);
-//     //   reset tbody
+/*function taoBang(arr) {
+  console.log(arr);
+    //   reset tbody
 
-//   getEle("tbodySinhVien").innerHTML = "";
+  getEle("tbodySinhVien").innerHTML = "";
 
-//   for (var i = 0; i < arr.length; i++) {
-//     var sinhVien = arr[i];
+  for (var i = 0; i < arr.length; i++) {
+    var sinhVien = arr[i];
 
-//     //   tao dong`
-//     var tagTR = document.createElement("tr");
-//     // tao cot
-//     var tagTD_maSV = document.createElement("td");
-//     var tagTD_tenSV = document.createElement("td");
-//     var tagTD_emailSV = document.createElement("td");
-//     var tagTD_ngaySinh = document.createElement("td");
-//     var tagTD_khoaHoc = document.createElement("td");
-//     var tagTD_DTB = document.createElement("td");
+    //   tao dong`
+    var tagTR = document.createElement("tr");
+    // tao cot
+    var tagTD_maSV = document.createElement("td");
+    var tagTD_tenSV = document.createElement("td");
+    var tagTD_emailSV = document.createElement("td");
+    var tagTD_ngaySinh = document.createElement("td");
+    var tagTD_khoaHoc = document.createElement("td");
+    var tagTD_DTB = document.createElement("td");
 
-//     // gán nội dung cho cột
-//     tagTD_maSV.innerHTML = sinhVien.maSV;
-//     tagTD_tenSV.innerHTML = sinhVien.tenSV;
-//     tagTD_emailSV.innerHTML = sinhVien.emailSV;
-//     tagTD_ngaySinh.innerHTML = sinhVien.ngaySinh;
-//     tagTD_khoaHoc.innerHTML = sinhVien.khoaHoc;
-//     tagTD_DTB.innerHTML = sinhVien.diemTB;
+    // gán nội dung cho cột
+    tagTD_maSV.innerHTML = sinhVien.maSV;
+    tagTD_tenSV.innerHTML = sinhVien.tenSV;
+    tagTD_emailSV.innerHTML = sinhVien.emailSV;
+    tagTD_ngaySinh.innerHTML = sinhVien.ngaySinh;
+    tagTD_khoaHoc.innerHTML = sinhVien.khoaHoc;
+    tagTD_DTB.innerHTML = sinhVien.diemTB;
 
-//     // append tung cot vao dong
-//     tagTR.appendChild(tagTD_maSV);
-//     tagTR.appendChild(tagTD_tenSV);
-//     tagTR.appendChild(tagTD_emailSV);
-//     tagTR.appendChild(tagTD_ngaySinh);
-//     tagTR.appendChild(tagTD_khoaHoc);
-//     tagTR.appendChild(tagTD_DTB);
+    // append tung cot vao dong
+    tagTR.appendChild(tagTD_maSV);
+    tagTR.appendChild(tagTD_tenSV);
+    tagTR.appendChild(tagTD_emailSV);
+    tagTR.appendChild(tagTD_ngaySinh);
+    tagTR.appendChild(tagTD_khoaHoc);
+    tagTR.appendChild(tagTD_DTB);
 
-//     // append dong vao tbody
-//   getEle("tbodySinhVien").appendChild(tagTR);
+    // append dong vao tbody
+  getEle("tbodySinhVien").appendChild(tagTR);
 
-//   }
-// }
+  }
+}*/
 
 function taoBang(arr) {
   var content = "";
@@ -94,6 +94,9 @@ function taoBang(arr) {
             <td>${sinhVien.khoaHoc}</td>
             <td>${sinhVien.diemTB}</td>
             <td>
+            <button class="btn btn-info" onclick="suaSV('${sinhVien.maSV}')">
+            <i class="fa fa-edit"></i>
+            </button>
             <button class="btn btn-danger" onclick="xoaSV('${sinhVien.maSV}')">
             <i class="fa fa-trash"></i>
             </button>
@@ -114,6 +117,30 @@ function xoaSV(maSV) {
   console.log(dssv.arr);
   dssv.xoaSV(maSV);
   console.log(dssv.arr);
+  setLocalStorage();
+  getLocalStorage();
+}
+/**
+ * Sua SV
+ */
+function suaSV(maSV) {
+  var sinhVien = dssv.suaSV(maSV);
+  console.log(sinhVien);
+
+  // show 
+getEle("txtMaSV").value = sinhVien.maSV;
+getEle("txtMaSV").disabled = true;
+
+getEle("txtTenSV").value = sinhVien.tenSV;
+getEle("txtEmail").value = sinhVien.emailSV;
+getEle("txtPass").value = sinhVien.matKhauSV;
+getEle("txtNgaySinh").value = sinhVien.ngaySinh;
+getEle("khSV").value = sinhVien.khoaHoc;
+getEle("txtDiemToan").value = sinhVien.diemToan;
+getEle("txtDiemLy").value = sinhVien.diemLy ; 
+getEle("txtDiemHoa").value = sinhVien.diemHoa;
+
+  // noen
   setLocalStorage();
   getLocalStorage();
 }
