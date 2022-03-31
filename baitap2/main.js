@@ -1,6 +1,6 @@
 // tạo đối tượng dssv từ lớp đối tượng dssv
 var dssv = new Danhsachsinhvien();
-
+getLocalStorage();
 function getEle(id) {
   return document.getElementById(id);
 }
@@ -100,15 +100,20 @@ function taoBang(arr) {
   }
   getEle("tbodySinhVien").innerHTML = content;
 
-
   setLocalStorage();
-}   
+}
 
 function setLocalStorage() {
-    // chuyển data từ json sang string 
-    var dataString = JSON.stringify(dssv.arr);
+  // chuyển data từ json sang string
+  var dataString = JSON.stringify(dssv.arr);
 
+  // lưu về storage
+  localStorage.setItem("DSSV", dataString);
+}
 
-    // lưu về storage 
-    localStorage.setItem("DSSV", dataString);
+function getLocalStorage() {
+  var data = localStorage.getItem("DSSV");
+  // chuyen tu string ve json
+  JSON.parse(data);
+  console.log(data);
 }
