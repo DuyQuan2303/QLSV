@@ -93,7 +93,11 @@ function taoBang(arr) {
             <td>${sinhVien.ngaySinh}</td>
             <td>${sinhVien.khoaHoc}</td>
             <td>${sinhVien.diemTB}</td>
-
+            <td>
+            <button class="btn btn-danger" onclick="xoaSV('${sinhVien.maSV}')">
+            <i class="fa fa-trash"></i>
+            </button>
+            </td>
             
         </tr>
         `;
@@ -101,6 +105,17 @@ function taoBang(arr) {
   getEle("tbodySinhVien").innerHTML = content;
 
   setLocalStorage();
+}
+
+/**
+ * Xoa SV
+ */
+function xoaSV(maSV) {
+  console.log(dssv.arr);
+  dssv.xoaSV(maSV);
+  console.log(dssv.arr);
+  setLocalStorage();
+  getLocalStorage();
 }
 
 function setLocalStorage() {
@@ -114,10 +129,12 @@ function setLocalStorage() {
 function getLocalStorage() {
   var data = localStorage.getItem("DSSV");
   // chuyen tu string ve json
-  var dataJSON = JSON.parse(data);
-  // console.log(dataJSON);
+  if (data) {
+    var dataJSON = JSON.parse(data);
+    // console.log(dataJSON);
 
-  dssv.arr = dataJSON;
-  console.log(dssv.arr);
-  taoBang(dssv.arr);
+    dssv.arr = dataJSON;
+    console.log(dssv.arr);
+    taoBang(dssv.arr);
+  }
 }
