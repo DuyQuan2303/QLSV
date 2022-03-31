@@ -38,13 +38,11 @@ getEle("btnThemSV").addEventListener("click", function () {
   dssv.themSV(sinhVien);
 
   taoBang(dssv.arr);
-
-  
 });
 
 // function taoBang(arr) {
 //   console.log(arr);
-//     //   reset tbody 
+//     //   reset tbody
 
 //   getEle("tbodySinhVien").innerHTML = "";
 
@@ -79,17 +77,15 @@ getEle("btnThemSV").addEventListener("click", function () {
 
 //     // append dong vao tbody
 //   getEle("tbodySinhVien").appendChild(tagTR);
-    
+
 //   }
 // }
 
-
-
-function taoBang(arr){
-    var content = "";
-    for(var i = 0 ; i < arr.length; i++){
-        var sinhVien = arr[i];
-        content += `
+function taoBang(arr) {
+  var content = "";
+  for (var i = 0; i < arr.length; i++) {
+    var sinhVien = arr[i];
+    content += `
         <tr>
             <td>${sinhVien.maSV}</td>
             <td>${sinhVien.tenSV}</td>
@@ -100,7 +96,19 @@ function taoBang(arr){
 
             
         </tr>
-        `
-    }
-    getEle("tbodySinhVien").innerHTML = content ; 
+        `;
+  }
+  getEle("tbodySinhVien").innerHTML = content;
+
+
+  setLocalStorage();
+}   
+
+function setLocalStorage() {
+    // chuyển data từ json sang string 
+    var dataString = JSON.stringify(dssv.arr);
+
+
+    // lưu về storage 
+    localStorage.setItem("DSSV", dataString);
 }
