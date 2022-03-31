@@ -114,6 +114,10 @@ function setLocalStorage() {
 function getLocalStorage() {
   var data = localStorage.getItem("DSSV");
   // chuyen tu string ve json
-  JSON.parse(data);
-  console.log(data);
+  var dataJSON = JSON.parse(data);
+  // console.log(dataJSON);
+
+  dssv.arr = dataJSON;
+  console.log(dssv.arr);
+  taoBang(dssv.arr);
 }
