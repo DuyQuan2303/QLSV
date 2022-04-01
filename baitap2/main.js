@@ -139,11 +139,33 @@ getEle("khSV").value = sinhVien.khoaHoc;
 getEle("txtDiemToan").value = sinhVien.diemToan;
 getEle("txtDiemLy").value = sinhVien.diemLy ; 
 getEle("txtDiemHoa").value = sinhVien.diemHoa;
-
+// bat nut Cap nhat sinh vien 
+getEle("btnCapNhatSV").style.display = "inline-block";
   // noen
   setLocalStorage();
   getLocalStorage();
 }
+// Cap nhat Sinh Vien 
+getEle("btnCapNhatSV").addEventListener("click", function(){
+  // console.log("123");
+  var sinhVien =layThongTinSinhVien();
+  // console.log(sinhVien);
+  dssv.capNhatSV(sinhVien);
+  setLocalStorage();
+  getLocalStorage();
+})
+
+// tim kiem sinh vien 
+getEle("txtKeyWord").addEventListener("keyup", function(){
+  // console.log("keyword")
+  var keyWord = getEle("txtKeyWord").value ;
+  console.log(keyWord)
+  dssv.timKiemSV(keyWord);
+})
+
+
+
+
 
 function setLocalStorage() {
   // chuyển data từ json sang string
