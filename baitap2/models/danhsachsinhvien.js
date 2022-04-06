@@ -62,9 +62,10 @@ this.timViTriSV = function (maSV){
     var mangTimKiem = [];
     for(var i = 0 ; i < this.arr.length; i++){
       var sinhVien = this.arr[i];
-      if((sinhVien.tenSV.toLowerCase().indexOf(keyword.toLowerCase())!== -1){
+      if(sinhVien.tenSV.toLowerCase().indexOf(keyword.toLowerCase())!== -1){
         mangTimKiem.push(sinhVien);
       }
     }
     return mangTimKiem;
 };
+
