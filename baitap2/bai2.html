@@ -28,27 +28,51 @@
             <div class="col-6 form-group">
               <label for="">Mã Sinh Viên : </label>
               <input type="text" class="form-control" id="txtMaSV" />
-              <div style="display: none" class="text-danger"></div>
+              <div
+                id="divErrorMaSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-6 form-group">
               <label for="">Tên Sinh Viên : </label>
               <input type="text" class="form-control" id="txtTenSV" />
+              <div
+                id="divErrorTenSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
           <div class="row">
             <div class="col-6 form-group">
               <label for="">Email : </label>
               <input type="text" class="form-control" id="txtEmail" />
+              <div
+                id="divErrorEmailSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-6 form-group">
               <label for="">Mật khẩu: </label>
               <input type="text" class="form-control" id="txtPass" />
+              <div
+                id="divErrorMatKhauSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
           <div class="row">
             <div class="col-6 form-group">
               <label for="">Ngày Sinh : </label>
               <input type="date" class="form-control" id="txtNgaySinh" />
+              <div
+                id="divErrorNgaySinhSV"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-6 form-group">
               <label for="">Khóa học: </label>
@@ -57,20 +81,40 @@
                 <option>KH001</option>
                 <option>KH002</option>
               </select>
+              <div
+                id="divErrorKhoaHoc"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
           <div class="row">
             <div class="col-4 form-group">
               <label for="">Điểm toán : </label>
               <input type="text" class="form-control" id="txtDiemToan" />
+              <div
+                id="divErrorToan"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-4 form-group">
               <label for="">Điểm lý : </label>
               <input type="text" class="form-control" id="txtDiemLy" />
+              <div
+                id="divErrorLy"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
             <div class="col-4 form-group">
               <label for="">Điểm hóa : </label>
               <input type="text" class="form-control" id="txtDiemHoa" />
+              <div
+                id="divErrorHoa"
+                style="display: none"
+                class="text-danger"
+              ></div>
             </div>
           </div>
 
@@ -80,13 +124,22 @@
             </button>
           </div>
           <div class="form-group text-center">
-            <button id="btnCapNhatSV" class="btn btn-warning" style="display: none;">
+            <button
+              id="btnCapNhatSV"
+              class="btn btn-warning"
+              style="display: none"
+            >
               Cập nhật Sinh Viên
             </button>
           </div>
         </div>
         <div class="col-8 mx-auto">
-           <input id="txtKeyWord"type="text" class = "form-control"placeholder="Tìm kiếm Sinh Viên" >
+          <input
+            id="txtKeyWord"
+            type="text"
+            class="form-control"
+            placeholder="Tìm kiếm Sinh Viên"
+          />
           <table class="table">
             <thead>
               <tr>
@@ -99,7 +152,7 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody id="tbodySinhVien" style="text-align: center;"></tbody>
+            <tbody id="tbodySinhVien" style="text-align: center"></tbody>
           </table>
         </div>
       </div>
@@ -123,6 +176,9 @@
 
     <script src="./models/sinhvien.js"></script>
     <script src="../baitap2/models/danhsachsinhvien.js"></script>
+    <script src="./models/validation.js"></script>
+
     <script src="./main.js"></script>
+
   </body>
 </html>

@@ -6,8 +6,8 @@ function Danhsachsinhvien() {
     this.arr.push(sv);
   };
 
-//   Tìm vị trí sinh viên 
-this.timViTriSV = function (maSV){
+  //   Tìm vị trí sinh viên
+  this.timViTriSV = function (maSV) {
     var index = -1;
     for (var i = 0; i < this.arr.length; i++) {
       var sinhVien = this.arr[i];
@@ -17,7 +17,7 @@ this.timViTriSV = function (maSV){
       }
     }
     return index;
-}
+  };
   // Xóa sinh viên
   this.xoaSV = function (maSV) {
     /**
@@ -38,19 +38,19 @@ this.timViTriSV = function (maSV){
   this.suaSV = function (maSV) {
     var index = this.timViTriSV(maSV);
 
-    if (index !== -1){
-        // lay object sinh vien trong arr dua vao index 
-        var sinhVien = this.arr[index];
-        return sinhVien;
+    if (index !== -1) {
+      // lay object sinh vien trong arr dua vao index
+      var sinhVien = this.arr[index];
+      return sinhVien;
     }
-    return null ;
+    return null;
   };
 
   // Cập nhật sinh viên
   this.capNhatSV = function (sinhVien) {
     var index = this.timViTriSV(sinhVien.maSV);
 
-    if (index !== -1){
+    if (index !== -1) {
       this.arr[index] = sinhVien;
       return sinhVien;
     }
@@ -60,12 +60,12 @@ this.timViTriSV = function (maSV){
   // Tìm kiếm sinh viên
   this.timKiemSV = function (keyword) {
     var mangTimKiem = [];
-    for(var i = 0 ; i < this.arr.length; i++){
+    for (var i = 0; i < this.arr.length; i++) {
       var sinhVien = this.arr[i];
-      if(sinhVien.tenSV.toLowerCase().indexOf(keyword.toLowerCase())!== -1){
+      if (sinhVien.tenSV.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
         mangTimKiem.push(sinhVien);
       }
     }
     return mangTimKiem;
-};
-
+  };
+}

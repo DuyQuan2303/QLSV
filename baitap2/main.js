@@ -1,5 +1,9 @@
 // tạo đối tượng dssv từ lớp đối tượng dssv
 var dssv = new Danhsachsinhvien();
+// tao doi tuong validation tu lop doi tuong Validation
+var validation = new Validation();
+
+
 getLocalStorage();
 function getEle(id) {
   return document.getElementById(id);
@@ -15,7 +19,17 @@ function layThongTinSinhVien() {
   var _diemToan = getEle("txtDiemToan").value * 1;
   var _diemLy = getEle("txtDiemLy").value * 1;
   var _diemHoa = getEle("txtDiemHoa").value * 1;
+  // Set flag
+  var isValid = true;
+  //Validation
+ 
 
+
+  // Check form
+  if (!isValid) return null;
+
+
+  // tao doi tuong
   var sinhVien = new Sinhvien(
     _maSV,
     _tenSV,
@@ -35,51 +49,15 @@ function layThongTinSinhVien() {
 getEle("btnThemSV").addEventListener("click", function () {
   var sinhVien = layThongTinSinhVien();
 
-  dssv.themSV(sinhVien);
+  if (sinhVien){
+    dssv.themSV(sinhVien);
 
-  taoBang(dssv.arr);
-});
+    taoBang(dssv.arr);
 
-/*function taoBang(arr) {
-  console.log(arr);
-    //   reset tbody
-
-  getEle("tbodySinhVien").innerHTML = "";
-
-  for (var i = 0; i < arr.length; i++) {
-    var sinhVien = arr[i];
-
-    //   tao dong`
-    var tagTR = document.createElement("tr");
-    // tao cot
-    var tagTD_maSV = document.createElement("td");
-    var tagTD_tenSV = document.createElement("td");
-    var tagTD_emailSV = document.createElement("td");
-    var tagTD_ngaySinh = document.createElement("td");
-    var tagTD_khoaHoc = document.createElement("td");
-    var tagTD_DTB = document.createElement("td");
-
-    // gán nội dung cho cột
-    tagTD_maSV.innerHTML = sinhVien.maSV;
-    tagTD_tenSV.innerHTML = sinhVien.tenSV;
-    tagTD_emailSV.innerHTML = sinhVien.emailSV;
-    tagTD_ngaySinh.innerHTML = sinhVien.ngaySinh;
-    tagTD_khoaHoc.innerHTML = sinhVien.khoaHoc;
-    tagTD_DTB.innerHTML = sinhVien.diemTB;
-
-    // append tung cot vao dong
-    tagTR.appendChild(tagTD_maSV);
-    tagTR.appendChild(tagTD_tenSV);
-    tagTR.appendChild(tagTD_emailSV);
-    tagTR.appendChild(tagTD_ngaySinh);
-    tagTR.appendChild(tagTD_khoaHoc);
-    tagTR.appendChild(tagTD_DTB);
-
-    // append dong vao tbody
-  getEle("tbodySinhVien").appendChild(tagTR);
-
+    setLocalStorage();
   }
-}*/
+  
+});
 
 function taoBang(arr) {
   var content = "";
@@ -127,45 +105,42 @@ function suaSV(maSV) {
   var sinhVien = dssv.suaSV(maSV);
   console.log(sinhVien);
 
-  // show 
-getEle("txtMaSV").value = sinhVien.maSV;
-getEle("txtMaSV").disabled = true;
+  // show
+  getEle("txtMaSV").value = sinhVien.maSV;
+  getEle("txtMaSV").disabled = true;
 
-getEle("txtTenSV").value = sinhVien.tenSV;
-getEle("txtEmail").value = sinhVien.emailSV;
-getEle("txtPass").value = sinhVien.matKhauSV;
-getEle("txtNgaySinh").value = sinhVien.ngaySinh;
-getEle("khSV").value = sinhVien.khoaHoc;
-getEle("txtDiemToan").value = sinhVien.diemToan;
-getEle("txtDiemLy").value = sinhVien.diemLy ; 
-getEle("txtDiemHoa").value = sinhVien.diemHoa;
-// bat nut Cap nhat sinh vien 
-getEle("btnCapNhatSV").style.display = "inline-block";
+  getEle("txtTenSV").value = sinhVien.tenSV;
+  getEle("txtEmail").value = sinhVien.emailSV;
+  getEle("txtPass").value = sinhVien.matKhauSV;
+  getEle("txtNgaySinh").value = sinhVien.ngaySinh;
+  getEle("khSV").value = sinhVien.khoaHoc;
+  getEle("txtDiemToan").value = sinhVien.diemToan;
+  getEle("txtDiemLy").value = sinhVien.diemLy;
+  getEle("txtDiemHoa").value = sinhVien.diemHoa;
+  // bat nut Cap nhat sinh vien
+  getEle("btnCapNhatSV").style.display = "inline-block";
   // noen
   setLocalStorage();
   getLocalStorage();
 }
-// Cap nhat Sinh Vien 
-getEle("btnCapNhatSV").addEventListener("click", function(){
+// Cap nhat Sinh Vien
+getEle("btnCapNhatSV").addEventListener("click", function () {
   // console.log("123");
-  var sinhVien =layThongTinSinhVien();
+  var sinhVien = layThongTinSinhVien();
   // console.log(sinhVien);
   dssv.capNhatSV(sinhVien);
   setLocalStorage();
   getLocalStorage();
-})
+});
 
-// tim kiem sinh vien 
-getEle("txtKeyWord").addEventListener("keyup", function(){
+// tim kiem sinh vien
+getEle("txtKeyWord").addEventListener("keyup", function () {
   // console.log("keyword")
-  var keyWord = getEle("txtKeyWord").value ;
-  console.log(keyWord)
-  dssv.timKiemSV(keyWord);
-})
-
-
-
-
+  var keyWord = getEle("txtKeyWord").value;
+  console.log(keyWord);
+  var mangTimKiem = dssv.timKiemSV(keyWord);
+  taoBang(mangTimKiem);
+});
 
 function setLocalStorage() {
   // chuyển data từ json sang string
