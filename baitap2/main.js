@@ -3,7 +3,6 @@ var dssv = new Danhsachsinhvien();
 // tao doi tuong validation tu lop doi tuong Validation
 var validation = new Validation();
 
-
 getLocalStorage();
 function getEle(id) {
   return document.getElementById(id);
@@ -16,18 +15,56 @@ function layThongTinSinhVien() {
   var _matKhauSV = getEle("txtPass").value;
   var _ngaySinh = getEle("txtNgaySinh").value;
   var _khoaHoc = getEle("khSV").value;
-  var _diemToan = getEle("txtDiemToan").value * 1;
-  var _diemLy = getEle("txtDiemLy").value * 1;
-  var _diemHoa = getEle("txtDiemHoa").value * 1;
+  var _diemToan = getEle("txtDiemToan").value;
+  var _diemLy = getEle("txtDiemLy").value;
+  var _diemHoa = getEle("txtDiemHoa").value;
   // Set flag
   var isValid = true;
-  //Validation
- 
+  //Validation maSV
+  isValid &=
+    validation.kiemTraRong(_maSV, "divErrorMaSV", "Ma SV ko dc rong") &&
+    validation.kiemTraDoDaiKyTu(_maSV, "divErrorMaSV", "Do dai ky tu tu 4-10 ");
+  //Validation tenSV
+  isValid &=
+    validation.kiemTraRong(_tenSV, "divErrorTenSV", "Ten SV ko dc rong") &&
+    validation.kiemTraChuoiKyTu(_tenSV, "divErrorTenSV", "vui lam nhap ky tu");
+  // Validation email SV
+  isValid &=
+    validation.kiemTraRong(_emailSV, "divErrorEmailSV", "email ko dc rong") &&
+    validation.kiemTraEmail(_emailSV, "divErrorEmailSV", "email ko dung dinh dang");
+  // Validation _matkhauSV
+  isValid &= validation.kiemTraRong(
+    _matKhauSV,
+    "divErrorMatKhauSV",
+    "mat khau khong duoc rong"
+  );
+  // Validation ngay sinh
+  isValid &= validation.kiemTraRong(
+    _ngaySinh,
+    "divErrorNgaySinhSV",
+    "ngay sinh ko dc rong"
+  );
+  // Validation diem toan
+  isValid &= validation.kiemTraRong(
+    _diemToan,
+    "divErrorToan",
+    "diem Toan ko dc rong"
+  );
+  isValid &= validation.kiemTraRong(
+    _diemLy,
+    "divErrorLy",
+    "diem Toan ko dc rong"
+  );
+  isValid &= validation.kiemTraRong(
+    _diemHoa,
+    "divErrorHoa",
+    "diem Toan ko dc rong"
+  );
 
+  //kiem tra do dai ky tu cho maSV
 
   // Check form
   if (!isValid) return null;
-
 
   // tao doi tuong
   var sinhVien = new Sinhvien(
@@ -49,14 +86,13 @@ function layThongTinSinhVien() {
 getEle("btnThemSV").addEventListener("click", function () {
   var sinhVien = layThongTinSinhVien();
 
-  if (sinhVien){
+  if (sinhVien) {
     dssv.themSV(sinhVien);
 
     taoBang(dssv.arr);
 
     setLocalStorage();
   }
-  
 });
 
 function taoBang(arr) {
